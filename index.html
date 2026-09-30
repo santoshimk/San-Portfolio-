@@ -1753,44 +1753,396 @@
             .skills-grid {
                 grid-template-columns: 1fr;
             }
+
+            .hero-text h1 {
+                font-size: 48px;
+            }
+
+            nav {
+                padding: 15px 30px;
+                gap: 25px;
+            }
+
+            nav a {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
         }
 
         @media (max-width: 768px) {
+            body::after {
+                width: 400px;
+                height: 400px;
+            }
+
+            /* Mobile Navigation */
+            nav {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 12px;
+                padding: 6px 10px;
+                letter-spacing: 1px;
+            }
+
+            .nav-icons {
+                width: 100%;
+                justify-content: center;
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .nav-icons a {
+                width: 40px;
+                height: 40px;
+            }
+
+            /* Hero Section Mobile */
+            .hero {
+                padding: 120px 20px 50px;
+                min-height: auto;
+            }
+
+            .hero-content {
+                gap: 40px;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 32px;
+                line-height: 1.2;
+            }
+
+            .hero-text p {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+
+            /* Image Mobile */
+            .hero-image {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+
+            .image-wrapper {
+                height: 450px;
+            }
+
+            /* Sections Mobile */
             .section {
-                padding: 80px 30px;
+                padding: 60px 20px;
+                min-height: auto;
+            }
+
+            .container {
+                padding: 0;
             }
 
             .section-title {
-                font-size: 36px;
+                font-size: 32px;
+                margin-bottom: 40px;
             }
 
-            .expertise-accordion {
-                padding: 0 10px;
+            /* About Section Mobile */
+            .about-content {
+                flex-direction: column;
+                gap: 30px;
             }
 
-            .expertise-header {
+            .about-text p {
+                font-size: 16px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .skill-item {
                 padding: 20px;
             }
 
-            .expertise-header h3 {
+            .skill-item h4 {
                 font-size: 18px;
             }
 
-            .expertise-item.active .expertise-content {
-                padding: 0 20px 20px 20px;
+            .skill-item p {
+                font-size: 14px;
             }
 
+            /* Expertise Mobile */
+            .expertise-accordion {
+                padding: 0;
+            }
+
+            .expertise-item {
+                margin-bottom: 15px;
+            }
+
+            .expertise-header {
+                padding: 18px 15px;
+            }
+
+            .icon-small {
+                width: 45px;
+                height: 45px;
+            }
+
+            .icon-small svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .expertise-header h3 {
+                font-size: 14px;
+                letter-spacing: 1px;
+            }
+
+            .toggle-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .expertise-item.active .expertise-content {
+                padding: 15px;
+            }
+
+            .expertise-description {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .skill-tags {
+                gap: 8px;
+            }
+
+            .skill-tag {
+                padding: 8px 14px;
+                font-size: 11px;
+            }
+
+            /* Timeline Mobile */
             .timeline {
                 padding-left: 30px;
             }
 
+            .timeline::before {
+                left: 0;
+            }
+
             .timeline-item {
+                padding-left: 25px;
+                margin-bottom: 40px;
+            }
+
+            .timeline-item::before {
+                left: -40px;
+                width: 14px;
+                height: 14px;
+            }
+
+            .timeline-date {
+                font-size: 12px;
+                padding: 6px 15px;
+            }
+
+            .timeline-content h3 {
+                font-size: 22px;
+            }
+
+            .timeline-content h4 {
+                font-size: 16px;
+            }
+
+            .timeline-content p {
+                font-size: 14px;
+            }
+
+            .timeline-content ul li {
+                font-size: 13px;
                 padding-left: 20px;
+            }
+
+            /* Contact Mobile */
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-info h3 {
+                font-size: 26px;
+            }
+
+            .contact-info > p {
+                font-size: 16px;
+            }
+
+            .contact-details {
+                gap: 20px;
+            }
+
+            .contact-item {
+                padding: 15px;
+            }
+
+            .contact-item h4 {
+                font-size: 16px;
+            }
+
+            .contact-item p {
+                font-size: 14px;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+
+            .form-group textarea {
+                min-height: 100px;
+            }
+
+            .submit-btn {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            /* Footer Mobile */
+            footer {
+                padding: 25px 20px;
             }
 
             footer .container {
                 flex-direction: column;
                 text-align: center;
+                gap: 15px;
+            }
+
+            footer p {
+                font-size: 14px;
+            }
+
+            .social-links {
+                gap: 15px;
+            }
+
+            /* Loader Mobile */
+            .loader {
+                width: 100px;
+                height: 100px;
+            }
+
+            .loader-text {
+                font-size: 20px;
+                margin-top: 30px;
+            }
+
+            /* Particles Mobile */
+            .particle {
+                width: 6px;
+                height: 6px;
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            nav {
+                padding: 12px 15px;
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 11px;
+                padding: 5px 8px;
+            }
+
+            .nav-icons a {
+                width: 36px;
+                height: 36px;
+            }
+
+            .hero {
+                padding: 100px 15px 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 28px;
+            }
+
+            .hero-text p {
+                font-size: 14px;
+            }
+
+            .cta-button {
+                padding: 10px 25px;
+                font-size: 14px;
+            }
+
+            .image-wrapper {
+                height: 400px;
+            }
+
+            .section {
+                padding: 50px 15px;
+            }
+
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+
+            .expertise-header h3 {
+                font-size: 12px;
+            }
+
+            .timeline-content h3 {
+                font-size: 20px;
+            }
+
+            .contact-form {
+                padding: 20px;
+                border-radius: 15px;
+            }
+        }
+
+        /* Landscape Mobile Optimization */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                padding: 100px 20px 40px;
+            }
+
+            .hero-content {
+                flex-direction: row;
+                gap: 30px;
+            }
+
+            .hero-image {
+                max-width: 300px;
+            }
+
+            .image-wrapper {
+                height: 350px;
+            }
+
+            .section {
+                min-height: auto;
             }
         }
     </style>
