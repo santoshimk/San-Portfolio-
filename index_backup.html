@@ -255,12 +255,12 @@
             justify-content: center;
             align-items: center;
             padding: 20px 50px;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
             gap: 50px;
-            box-shadow: 0 4px 30px rgba(255, 20, 147, 0.3);
-            border-bottom: 2px solid #ff1493;
+            box-shadow: 0 4px 30px rgba(255, 105, 180, 0.2);
+            border-bottom: 2px solid rgba(255, 105, 180, 0.1);
             animation: slideDown 0.8s ease-out;
         }
 
@@ -276,29 +276,27 @@
         }
 
         nav a {
-            font-family: 'Orbitron', monospace;
-            color: #ffffff;
+            color: #2d1b2e;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
-            padding: 8px 16px;
+            padding: 8px 0;
             position: relative;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            overflow: hidden;
         }
 
         nav a::before {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
             width: 0;
-            height: 2px;
-            background: #ff1493;
+            height: 3px;
+            background: linear-gradient(90deg, #ff69b4, #ff85c1, #ffa1d0);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 10px #ff1493;
-        }
+            transform: translateX(-50%);
+            border-radius: 3px;
         }
 
         nav a:hover::before,
@@ -1648,7 +1646,7 @@
             <div class="loader-circle"></div>
             <div class="loader-circle"></div>
         </div>
-        <div class="loader-text">LOADING...</div>
+        <div class="loader-text">Loading...</div>
     </div>
 
     <!-- Animated Particles Background -->
