@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Santhoshikar MK · Aspiring Full Stack Developer</title>
+<meta name="description" content="Portfolio of Santhoshikar MK, BCA student in Mandya, Karnataka, aspiring web full stack developer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --paper:#eef1f6; --grid:#d6dce8; --ink:#14213d; --muted:#4f5b75;
+  --card:#ffffff; --line:#c3cbdb; --mark:#ffc93c; --mark-ink:#14213d; --code-bg:#14213d; --code-fg:#e8edf7;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'Instrument Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0f1526; --grid:#1b2440; --ink:#e8edf7; --muted:#98a4c0;
+    --card:#161e36; --line:#2a3558; --mark:#ffc93c; --mark-ink:#14213d; --code-bg:#0a0f1e; --code-fg:#e8edf7;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0f1526; --grid:#1b2440; --ink:#e8edf7; --muted:#98a4c0;
+  --card:#161e36; --line:#2a3558; --mark:#ffc93c; --mark-ink:#14213d; --code-bg:#0a0f1e; --code-fg:#e8edf7;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{
+  margin:0;background-color:var(--paper);color:var(--ink);font:400 1.05rem/1.65 var(--body);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:32px 32px;background-attachment:fixed;
+}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
+.logo{font:800 1.1rem var(--display);text-decoration:none;letter-spacing:-.01em}
+.nav nav{display:flex;gap:20px;align-items:center;font-size:.95rem;font-weight:500}
+.nav nav a{text-decoration:none;color:var(--muted)}
+.nav nav a:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;width:34px;height:34px;cursor:pointer;font-size:1rem}
+/* hero */
+.hero{padding:88px 0 72px}
+.hero h1{font:800 clamp(3rem,10.5vw,8rem)/.92 var(--display);letter-spacing:-.04em;margin:0 0 28px}
+.hero h1 span{display:block}
+.hl{background:linear-gradient(transparent 58%,var(--mark) 58% 92%,transparent 92%);padding:0 .06em;color:var(--ink)}
+.hero .role{font:500 clamp(1.15rem,2.6vw,1.6rem)/1.35 var(--display);max-width:30ch;margin:0 0 28px}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:600;text-decoration:none;border:2px solid var(--ink);transition:transform .15s}
+.btn.primary{background:var(--mark);color:var(--mark-ink);border-color:var(--mark-ink)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--ink)}
+.meta{margin-top:36px;color:var(--muted);font-size:.95rem}
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font:800 clamp(1.8rem,4vw,2.6rem)/1.1 var(--display);letter-spacing:-.025em;margin:0 0 28px}
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:48px}
+.about p{margin:0 0 16px;max-width:62ch}
+.facts{margin:0;display:grid;gap:14px;align-content:start}
+.facts div{padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.facts dt{font-size:.85rem;color:var(--muted)}
+.facts dd{margin:2px 0 0;font-weight:600}
+/* stack explorer */
+.stack{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:24px;align-items:start}
+.groups{display:grid;gap:18px}
+.groups h3{font:500 .95rem var(--body);color:var(--muted);margin:0 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 .95rem var(--mono);padding:8px 14px;border-radius:8px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--mark);color:var(--mark-ink);border-color:var(--mark-ink)}
+.term{background:var(--code-bg);color:var(--code-fg);border-radius:12px;overflow:hidden;box-shadow:6px 6px 0 var(--ink);min-width:0}
+.term-top{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid #ffffff22;font:400 .85rem var(--mono);color:#98a4c0}
+.term pre{margin:0;padding:20px 18px;font:400 .92rem/1.7 var(--mono);overflow-x:auto;min-height:190px;white-space:pre}
+.term .note{padding:0 18px 16px;font-size:.9rem;color:#98a4c0}
+/* education + projects */
+.edu{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 26px;max-width:640px}
+.edu h3{font:800 1.3rem var(--display);margin:0 0 4px}
+.edu p{margin:0;color:var(--muted)}
+.status{display:inline-block;margin-top:14px;padding:3px 12px;border-radius:999px;background:var(--mark);color:var(--mark-ink);font-weight:600;font-size:.9rem}
+.empty{border:2px dashed var(--ink);border-radius:12px;padding:32px;max-width:640px;background:color-mix(in srgb,var(--card) 60%,transparent)}
+.empty p{margin:0 0 18px;max-width:52ch}
+/* contact */
+.contact h2{font-size:clamp(2.2rem,6vw,4.2rem)}
+.links{display:grid;gap:12px;max-width:520px;margin-top:8px}
+.links a{display:flex;justify-content:space-between;gap:16px;padding:16px 20px;background:var(--card);border:1.5px solid var(--ink);border-radius:10px;text-decoration:none;font-weight:600;overflow-wrap:anywhere}
+.links a span{color:var(--muted);font-weight:400}
+.links a:hover{background:var(--mark);color:var(--mark-ink)}
+.links a:hover span{color:var(--mark-ink)}
+footer{padding:32px 0 48px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+/* one load moment */
+.hero h1 span{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 span:nth-child(2){animation-delay:.12s}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media (max-width:760px){
+  .about,.stack{grid-template-columns:1fr}a
+  .nav nav a.hide-sm{display:none}
+  .hero{padding:56px 0 48px}
+  section{padding:48px 0}
+}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Santhoshikar MK</a>
+    <nav aria-label="Main">
+      <a class="hide-sm" href="#about">About</a>
+      <a class="hide-sm" href="#skills">Skills</a>
+      <a class="hide-sm" href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button id="theme" aria-label="Switch light or dark theme">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <h1><span>Santhoshikar</span><span><em class="hl" style="font-style:normal">MK</em></span></h1>
+    <p class="role">BCA student learning to build complete web applications, from database to browser.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:santoshi.mk2006@gmail.com">Email me</a>
+      <a class="btn" href="#skills">See what I work with</a>
+    </div>
+    <p class="meta">Mandya, Karnataka, India · Open to internships and entry-level roles</p>
+  </div>
+
+  <section id="about"><div class="wrap about">
+    <div>
+      <h2>About me</h2>
+      <p>I'm a Bachelor of Computer Applications student aiming for a career in web full stack development. I have a working foundation in Java, Python and C++, plus HTML and two databases, MySQL and MongoDB.</p>
+      <p>I'm looking for an internship or entry-level role where I can put that foundation into real projects, learn from a team, and keep sharpening my skills.</p>
+    </div>
+    <dl class="facts">
+      <div><dt>Career level</dt><dd>Fresher</dd></div>
+      <div><dt>Preferred role</dt><dd>Web Full Stack Developer</dd></div>
+      <div><dt>Location</dt><dd>Mandya, Karnataka</dd></div>
+    </dl>
+  </div></section>
+
+  <section id="skills"><div class="wrap">
+    <h2>Skills</h2>
+    <div class="stack">
+      <div class="groups">
+        <div><h3>Programming languages</h3><div class="chips" role="group" aria-label="Programming languages">
+          <button class="chip" data-k="Java" aria-pressed="true">Java</button>
+          <button class="chip" data-k="Python" aria-pressed="false">Python</button>
+          <button class="chip" data-k="C++" aria-pressed="false">C++</button></div></div>
+        <div><h3>Web technologies</h3><div class="chips" role="group" aria-label="Web technologies">
+          <button class="chip" data-k="HTML" aria-pressed="false">HTML</button></div></div>
+        <div><h3>Databases</h3><div class="chips" role="group" aria-label="Databases">
+          <button class="chip" data-k="MySQL" aria-pressed="false">MySQL</button>
+          <button class="chip" data-k="MongoDB" aria-pressed="false">MongoDB</button></div></div>
+      </div>
+      <div class="term" aria-live="polite">
+        <div class="term-top"><span id="fname">Main.java</span><span id="lname">Java</span></div>
+        <pre id="code"></pre>
+        <div class="note">Pick a skill to see a small example of it.</div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="education"><div class="wrap">
+    <h2>Education</h2>
+    <div class="edu">
+      <h3>Bachelor of Computer Applications (BCA)</h3>
+      <p>Government College for Women's (Autonomous), Mandya</p>
+      <span class="status">Currently pursuing</span>
+    </div>
+  </div></section>
+
+  <section id="projects"><div class="wrap">
+    <h2>Projects</h2>
+    <div class="empty">
+      <p>My academic and personal projects will appear here soon. If you have an idea or a small task I could learn from, I'd like to hear it.</p>
+      <a class="btn primary" href="mailto:santoshi.mk2006@gmail.com?subject=Project%20idea">Suggest a project</a>
+    </div>
+  </div></section>
+
+  <section class="contact" id="contact"><div class="wrap">
+    <h2>Let's talk about your next intern.</h2>
+    <div class="links">
+      <a href="mailto:santoshi.mk2006@gmail.com">Email <span>santoshi.mk2006@gmail.com</span></a>
+      <a href="tel:+918217865707">Phone <span>+91 82178 65707</span></a>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">Santhoshikar MK · Mandya, Karnataka</div></footer>
+
+<script>
+const S={
+ "Java":["Main.java","public class Main {\n  public static void main(String[] args) {\n    String name = \"Santhoshikar\";\n    System.out.println(\"Hello, \" + name);\n  }\n}"],
+ "Python":["main.py","skills = [\"Java\", \"Python\", \"C++\"]\n\nfor skill in skills:\n    print(f\"Learning {skill}\")\n"],
+ "C++":["main.cpp","#include <iostream>\nusing namespace std;\n\nint main() {\n  cout << \"Hello, world\" << endl;\n  return 0;\n}"],
+ "HTML":["index.html","<main>\n  <h1>Hello, world</h1>\n  <p>My first step into full stack.</p>\n</main>"],
+ "MySQL":["query.sql","SELECT name, marks\nFROM students\nWHERE marks >= 60\nORDER BY marks DESC;"],
+ "MongoDB":["query.js","db.students.find(\n  { marks: { $gte: 60 } }\n).sort({ marks: -1 })"]
+};
+const code=document.getElementById('code'),fn=document.getElementById('fname'),ln=document.getElementById('lname');
+function show(k){
+  const [f,c]=S[k];code.textContent=c;fn.textContent=f;ln.textContent=k;
+  document.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===k));
+}
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>show(b.dataset.k)));
+show('Java');
+const root=document.documentElement,btn=document.getElementById('theme');
+try{const t=localStorage.getItem('theme');if(t)root.setAttribute('data-theme',t)}catch(e){}
+btn.addEventListener('click',()=>{
+  const dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);
+  const next=dark?'light':'dark';root.setAttribute('data-theme',next);
+  try{localStorage.setItem('theme',next)}catch(e){}
+});
+</script>
+</body>
+</html>
