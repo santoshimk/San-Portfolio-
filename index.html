@@ -263,12 +263,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 50px;
+            padding: 20px 60px;
             background: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(25px) saturate(180%);
             -webkit-backdrop-filter: blur(25px) saturate(180%);
             z-index: 1000;
-            gap: 35px;
             box-shadow: 0 8px 32px rgba(255, 20, 147, 0.15),
                         0 2px 8px rgba(0, 0, 0, 0.3);
             border-bottom: 1px solid rgba(255, 20, 147, 0.3);
@@ -277,22 +276,29 @@
             transform-origin: top;
         }
 
-        /* Logo */
+        /* Logo - Always Visible */
         .nav-logo {
             font-family: 'Orbitron', monospace;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 800;
             background: linear-gradient(135deg, #ff1493, #ff69b4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: 3px;
-            display: none; /* Hidden on desktop */
+            display: block;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        /* Hamburger Menu */
+        .nav-logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.6));
+        }
+
+        /* Hamburger Menu - Mobile Only */
         .hamburger {
-            display: none; /* Hidden on desktop */
+            display: none;
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
@@ -322,12 +328,14 @@
             transform: rotate(-45deg) translate(8px, -8px);
         }
 
-        /* Nav Menu Container */
+        /* Nav Menu Container - Desktop Centered */
         .nav-menu {
             display: flex;
-            gap: 35px;
-            flex: 1;
-            justify-content: center;
+            gap: 40px;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         /* Elegant glow effect on nav */
@@ -387,75 +395,28 @@
         }
 
         nav a {
-            font-family: 'Orbitron', monospace;
+            font-family: 'Space Grotesk', sans-serif;
             color: #ffffff;
             text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            padding: 10px 18px;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 8px 0;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            border-radius: 8px;
-            background: transparent;
-            overflow: hidden;
+            transition: all 0.3s ease;
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
         }
 
-        /* Cute sparkle effect on nav links */
-        nav a::after {
-            content: '✨';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 12px;
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform: scale(0) rotate(-45deg);
-        }
-
-        nav a:hover::after {
-            opacity: 1;
-            transform: scale(1) rotate(0deg);
-            top: 2px;
-            right: 2px;
-        }
-
-        /* Gradient background on hover */
-        nav a::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, 
-                rgba(255, 20, 147, 0.15), 
-                rgba(255, 105, 180, 0.15));
-            opacity: 0;
-            transition: opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border-radius: 8px;
-            z-index: -1;
-        }
-
-        nav a:hover::before {
-            opacity: 1;
-        }
-
-        /* Animated underline */
-        nav a span {
-            position: relative;
-            z-index: 1;
-        }
-
+        /* Simple underline effect like the reference */
         nav a span::after {
             content: '';
             position: absolute;
             bottom: -5px;
-            left: 50%;
+            left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #ff1493, #ff69b4, #ff1493, transparent);
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform: translateX(-50%);
-            box-shadow: 0 0 8px #ff1493;
+            background: #ff1493;
+            transition: width 0.3s ease;
         }
 
         nav a:hover span::after,
@@ -464,143 +425,63 @@
         }
 
         nav a:hover {
-            color: #ff69b4;
-            transform: translateY(-3px) scale(1.05);
-            text-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+            color: #ff1493;
         }
 
         nav a.active {
             color: #ff1493;
-            text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
-            background: rgba(255, 20, 147, 0.1);
-        }
-
-        nav a.active::before {
-            opacity: 1;
-        }
-
-        /* Cute floating animation for active link */
-        @keyframes floatActive {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-2px); }
-        }
-
-        nav a.active {
-            animation: floatActive 2s ease-in-out infinite;
         }
 
         .nav-icons {
             display: flex;
             gap: 15px;
-            margin-left: auto;
+            align-items: center;
         }
 
         .nav-icons a {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(255, 20, 147, 0.2), rgba(255, 105, 180, 0.2));
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.3s ease;
             position: relative;
-            overflow: visible;
-            border: 2px solid rgba(255, 105, 180, 0.5);
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Ripple effect on icon hover */
-        .nav-icons a::before {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 20, 147, 0.4), transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
-        .nav-icons a:hover::before {
-            width: 120px;
-            height: 120px;
-        }
-
-        /* Sparkle effect for icons */
-        .nav-icons a::after {
-            content: '✨';
-            position: absolute;
-            font-size: 10px;
-            opacity: 0;
-            top: -5px;
-            right: -5px;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform: scale(0) rotate(-180deg);
-            pointer-events: none;
-        }
-
-        .nav-icons a:hover::after {
-            opacity: 1;
-            transform: scale(1) rotate(0deg);
+        .nav-icons a:hover {
+            background: rgba(255, 20, 147, 0.2);
+            border-color: #ff1493;
+            transform: translateY(-3px);
         }
 
         .nav-icons a svg {
             position: relative;
             z-index: 2;
-            color: #ff1493;
-            fill: #ff1493;
+            color: #ffffff;
+            fill: #ffffff;
             stroke: none;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            filter: drop-shadow(0 2px 4px rgba(255, 20, 147, 0.4));
-            width: 24px !important;
-            height: 24px !important;
-            min-width: 24px;
-            min-height: 24px;
+            transition: all 0.3s ease;
+            width: 20px !important;
+            height: 20px !important;
+            min-width: 20px;
+            min-height: 20px;
             display: block;
         }
 
         .nav-icons a svg path {
-            fill: #ff1493;
+            fill: #ffffff;
         }
 
         .nav-icons a:hover svg {
-            color: #ffffff;
-            fill: #ffffff;
-            transform: scale(1.2) rotate(5deg);
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+            color: #ff1493;
+            fill: #ff1493;
         }
 
         .nav-icons a:hover svg path {
-            fill: #ffffff;
-        }
-
-        .nav-icons a:hover {
-            transform: translateY(-5px) scale(1.15) rotate(-5deg);
-            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5),
-                        0 0 20px rgba(255, 105, 180, 0.3);
-            border-color: #ff1493;
-            background: linear-gradient(135deg, rgba(255, 20, 147, 0.3), rgba(255, 105, 180, 0.3));
-        }
-
-        /* Pulse animation for icons */
-        @keyframes iconPulse {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(255, 20, 147, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 0 8px rgba(255, 20, 147, 0);
-            }
-        }
-
-        .nav-icons a {
-            animation: iconPulse 3s ease-in-out infinite;
-        }
-
-        .nav-icons a:nth-child(2) {
-            animation-delay: 0.5s;
+            fill: #ff1493;
         }
 
         /* Hero Section with animations */
@@ -2020,24 +1901,23 @@
             /* Mobile Navigation - Enhanced */
             nav {
                 padding: 15px 20px;
-                justify-content: space-between;
-                gap: 15px;
                 backdrop-filter: blur(20px) saturate(150%);
             }
 
-            /* Show Logo and Hamburger on Mobile */
-            .nav-logo {
-                display: block;
-            }
-
+            /* Show Hamburger on Mobile */
             .hamburger {
                 display: flex;
+            }
+
+            /* Keep logo visible */
+            .nav-logo {
+                font-size: 24px;
             }
 
             /* Mobile Menu - Slide from Top */
             .nav-menu {
                 position: fixed;
-                top: 70px;
+                top: 65px;
                 left: 0;
                 right: 0;
                 flex-direction: column;
@@ -2051,6 +1931,8 @@
                 transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 border-bottom: 2px solid rgba(255, 20, 147, 0.3);
                 box-shadow: 0 10px 40px rgba(255, 20, 147, 0.2);
+                transform: none;
+                position: fixed;
             }
 
             .nav-menu.active {
@@ -2063,8 +1945,8 @@
                 padding: 15px 20px;
                 text-align: center;
                 border-bottom: 1px solid rgba(255, 20, 147, 0.1);
-                font-size: 14px;
-                letter-spacing: 2px;
+                font-size: 15px;
+                letter-spacing: 0.5px;
                 transform: translateY(-20px);
                 opacity: 0;
                 animation: none;
@@ -2091,22 +1973,8 @@
                 border-bottom: none;
             }
 
-            .nav-menu a::after {
-                display: none; /* Remove sparkle on mobile */
-            }
-
             nav.nav-scrolled {
                 padding: 12px 20px;
-            }
-
-            nav a {
-                font-size: 11px;
-                padding: 8px 14px;
-                letter-spacing: 1.5px;
-            }
-
-            nav a::after {
-                font-size: 10px;
             }
 
             .nav-icons {
@@ -2119,10 +1987,10 @@
             }
 
             .nav-icons a svg {
-                width: 20px;
-                height: 20px;
-                min-width: 20px;
-                min-height: 20px;
+                width: 18px !important;
+                height: 18px !important;
+                min-width: 18px;
+                min-height: 18px;
             }
 
             /* Hero Section Mobile */
@@ -2513,11 +2381,11 @@
             <span></span>
         </div>
         <div class="nav-menu">
-            <a href="#home" class="active"><span>HOME</span></a>
-            <a href="#about"><span>ABOUT</span></a>
-            <a href="#expertise"><span>EXPERTISE</span></a>
-            <a href="#experience"><span>EXPERIENCE</span></a>
-            <a href="#contact"><span>CONTACT</span></a>
+            <a href="#home" class="active"><span>Home</span></a>
+            <a href="#about"><span>About</span></a>
+            <a href="#expertise"><span>Expertise</span></a>
+            <a href="#experience"><span>Experience</span></a>
+            <a href="#contact"><span>Contact</span></a>
         </div>
         <div class="nav-icons">
             <a href="https://www.linkedin.com/in/santhoshikar-mk-704a4a346" target="_blank" aria-label="LinkedIn">
