@@ -261,7 +261,7 @@
             top: 0;
             width: 100%;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             padding: 18px 50px;
             background: rgba(10, 10, 10, 0.85);
@@ -275,6 +275,59 @@
             animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             transform-origin: top;
+        }
+
+        /* Logo */
+        .nav-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 3px;
+            display: none; /* Hidden on desktop */
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none; /* Hidden on desktop */
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            border-radius: 3px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 0 8px rgba(255, 20, 147, 0.5);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Nav Menu Container */
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+            flex: 1;
+            justify-content: center;
         }
 
         /* Elegant glow effect on nav */
@@ -1966,15 +2019,84 @@
 
             /* Mobile Navigation - Enhanced */
             nav {
-                padding: 12px 20px;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
+                padding: 15px 20px;
+                justify-content: space-between;
+                gap: 15px;
                 backdrop-filter: blur(20px) saturate(150%);
             }
 
+            /* Show Logo and Hamburger on Mobile */
+            .nav-logo {
+                display: block;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            /* Mobile Menu - Slide from Top */
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(30px);
+                padding: 20px;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                border-bottom: 2px solid rgba(255, 20, 147, 0.3);
+                box-shadow: 0 10px 40px rgba(255, 20, 147, 0.2);
+            }
+
+            .nav-menu.active {
+                max-height: 400px;
+                opacity: 1;
+                padding: 30px 20px;
+            }
+
+            .nav-menu a {
+                padding: 15px 20px;
+                text-align: center;
+                border-bottom: 1px solid rgba(255, 20, 147, 0.1);
+                font-size: 14px;
+                letter-spacing: 2px;
+                transform: translateY(-20px);
+                opacity: 0;
+                animation: none;
+            }
+
+            .nav-menu.active a {
+                animation: slideInMenuItem 0.5s ease-out forwards;
+            }
+
+            .nav-menu.active a:nth-child(1) { animation-delay: 0.1s; }
+            .nav-menu.active a:nth-child(2) { animation-delay: 0.2s; }
+            .nav-menu.active a:nth-child(3) { animation-delay: 0.3s; }
+            .nav-menu.active a:nth-child(4) { animation-delay: 0.4s; }
+            .nav-menu.active a:nth-child(5) { animation-delay: 0.5s; }
+
+            @keyframes slideInMenuItem {
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+
+            .nav-menu a:last-child {
+                border-bottom: none;
+            }
+
+            .nav-menu a::after {
+                display: none; /* Remove sparkle on mobile */
+            }
+
             nav.nav-scrolled {
-                padding: 10px 20px;
+                padding: 12px 20px;
             }
 
             nav a {
@@ -1988,10 +2110,6 @@
             }
 
             .nav-icons {
-                width: 100%;
-                justify-content: center;
-                margin-left: 0;
-                margin-top: 8px;
                 gap: 12px;
             }
 
@@ -2388,11 +2506,19 @@
 
     <!-- Navigation -->
     <nav>
-        <a href="#home" class="active"><span></span>HOME</span></a>
-        <a href="#about"><span>ABOUT</span></a>
-        <a href="#expertise"><span>EXPERTISE</span></a>
-        <a href="#experience"><span>EXPERIENCE</span></a>
-        <a href="#contact"><span>CONTACT</span></a>
+        <div class="nav-logo">SAN</div>
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-menu">
+            <a href="#home" class="active"><span>HOME</span></a>
+            <a href="#about"><span>ABOUT</span></a>
+            <a href="#expertise"><span>EXPERTISE</span></a>
+            <a href="#experience"><span>EXPERIENCE</span></a>
+            <a href="#contact"><span>CONTACT</span></a>
+        </div>
         <div class="nav-icons">
             <a href="https://www.linkedin.com/in/santhoshikar-mk" target="_blank" aria-label="LinkedIn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2840,6 +2966,28 @@
         let lastScrollTop = 0;
         let scrollTimeout;
         let ticking = false;
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const hamburger = document.querySelector('.hamburger');
+                const navMenu = document.querySelector('.nav-menu');
+                
+                if (navMenu.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
 
         // Optimized scroll handler with requestAnimationFrame
         window.addEventListener('scroll', () => {
