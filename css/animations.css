@@ -1,9 +1,9 @@
 /* ============================================
-   Lightweight Animations
-   Only loads where needed - respects prefers-reduced-motion
+   Enhanced Animations & Transitions
+   Beautiful, smooth, and performant animations
    ============================================ */
 
-/* Slide Down Animation for Nav */
+/* ========== NAVIGATION ANIMATIONS ========== */
 @keyframes slideDown {
     from {
         transform: translateY(-100px);
@@ -16,10 +16,34 @@
 }
 
 nav {
-    animation: slideDown 0.6s ease-out;
+    animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Fade In Animations */
+/* Staggered menu item animations */
+.nav-menu a {
+    opacity: 0;
+    animation: slideInMenuItem 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.nav-menu a:nth-child(1) { animation-delay: 0.1s; }
+.nav-menu a:nth-child(2) { animation-delay: 0.2s; }
+.nav-menu a:nth-child(3) { animation-delay: 0.3s; }
+.nav-menu a:nth-child(4) { animation-delay: 0.4s; }
+.nav-menu a:nth-child(5) { animation-delay: 0.5s; }
+.nav-menu a:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideInMenuItem {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ========== FADE IN ANIMATIONS ========== */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -32,7 +56,7 @@ nav {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
     }
     to {
         opacity: 1;
@@ -43,7 +67,7 @@ nav {
 @keyframes fadeInLeft {
     from {
         opacity: 0;
-        transform: translateX(-30px);
+        transform: translateX(-40px);
     }
     to {
         opacity: 1;
@@ -54,7 +78,7 @@ nav {
 @keyframes fadeInRight {
     from {
         opacity: 0;
-        transform: translateX(30px);
+        transform: translateX(40px);
     }
     to {
         opacity: 1;
@@ -62,54 +86,107 @@ nav {
     }
 }
 
-/* Hero Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ========== HERO SECTION ANIMATIONS ========== */
 .hero-content {
-    animation: fadeInUp 0.8s ease-out 0.3s backwards;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
 }
 
 .hero-text h1 {
-    animation: fadeInLeft 0.8s ease-out 0.5s backwards;
+    animation: fadeInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
 }
 
 .hero-text p {
-    animation: fadeInLeft 0.8s ease-out 0.7s backwards;
+    animation: fadeInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s backwards;
 }
 
 .cta-button {
-    animation: fadeInLeft 0.8s ease-out 0.9s backwards;
+    animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s backwards;
 }
 
 .hero-image {
-    animation: fadeInRight 0.8s ease-out 0.6s backwards;
+    animation: fadeInRight 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
 }
 
-/* Floating Animation for Image */
+/* ========== FLOATING & HOVER ANIMATIONS ========== */
 @keyframes float-gentle {
     0%, 100% {
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-15px);
+        transform: translateY(-20px);
     }
 }
 
 .image-wrapper {
-    animation: float-gentle 5s ease-in-out infinite;
+    animation: float-gentle 6s ease-in-out infinite;
 }
 
-/* Slide In Animations for Menu Items */
-@keyframes slideInMenuItem {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
+/* Smooth hover lift effect */
+@keyframes hoverLift {
     to {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateY(-10px);
     }
 }
 
-/* Loading Animation */
+/* ========== ROTATING GRADIENT ANIMATION ========== */
+@keyframes rotateGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ========== GLOW PULSE ANIMATION ========== */
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 20, 147, 0.4),
+                    0 0 40px rgba(255, 20, 147, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(255, 20, 147, 0.6),
+                    0 0 60px rgba(255, 20, 147, 0.3),
+                    0 0 80px rgba(255, 20, 147, 0.2);
+    }
+}
+
+/* ========== SHIMMER EFFECT ========== */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.shimmer-effect {
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 3s infinite;
+}
+
+/* ========== LOADING ANIMATION ========== */
 @keyframes tech-spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -128,7 +205,204 @@ nav {
     animation-delay: 0.4s;
 }
 
-/* Disable animations for users who prefer reduced motion */
+@keyframes loaderTextGlow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(255, 20, 147, 0.8),
+                     0 0 40px rgba(255, 20, 147, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(255, 20, 147, 1),
+                     0 0 60px rgba(255, 20, 147, 0.7),
+                     0 0 80px rgba(255, 105, 180, 0.5);
+    }
+}
+
+.loader-text {
+    animation: loaderTextGlow 1.5s ease-in-out infinite;
+}
+
+/* ========== SCALE IN ANIMATION ========== */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ========== SLIDE IN FROM SIDES ========== */
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ========== BOUNCE ANIMATION ========== */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-15px);
+    }
+    60% {
+        transform: translateY(-7px);
+    }
+}
+
+/* ========== PARTICLE EFFECTS ========== */
+@keyframes particleFloat {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(50px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ========== TEXT GRADIENT ANIMATION ========== */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ========== BORDER GLOW ANIMATION ========== */
+@keyframes borderGlow {
+    0%, 100% {
+        border-color: rgba(255, 20, 147, 0.5);
+    }
+    50% {
+        border-color: rgba(255, 20, 147, 1);
+    }
+}
+
+/* ========== PULSE SCALE ========== */
+@keyframes pulseScale {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ========== SKILL CARD REVEAL ========== */
+.skill-item {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-item.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Stagger the skill items */
+.skill-item:nth-child(1) { transition-delay: 0.1s; }
+.skill-item:nth-child(2) { transition-delay: 0.2s; }
+.skill-item:nth-child(3) { transition-delay: 0.3s; }
+.skill-item:nth-child(4) { transition-delay: 0.4s; }
+.skill-item:nth-child(5) { transition-delay: 0.5s; }
+.skill-item:nth-child(6) { transition-delay: 0.6s; }
+
+/* ========== TIMELINE ANIMATIONS ========== */
+.timeline-item {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-item:nth-child(even).visible {
+    transform: translateX(0);
+}
+
+/* ========== EXPERTISE ACCORDION ANIMATION ========== */
+.expertise-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.expertise-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.expertise-item:nth-child(1) { transition-delay: 0.1s; }
+.expertise-item:nth-child(2) { transition-delay: 0.2s; }
+.expertise-item:nth-child(3) { transition-delay: 0.3s; }
+.expertise-item:nth-child(4) { transition-delay: 0.4s; }
+
+/* ========== CONTACT ITEMS ANIMATION ========== */
+.contact-item {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.contact-item:nth-child(1) { transition-delay: 0.1s; }
+.contact-item:nth-child(2) { transition-delay: 0.2s; }
+.contact-item:nth-child(3) { transition-delay: 0.3s; }
+.contact-item:nth-child(4) { transition-delay: 0.4s; }
+
+/* ========== FORM ANIMATION ========== */
+.contact-form {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.contact-form.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========== DISABLE ANIMATIONS FOR REDUCED MOTION ========== */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -144,6 +418,11 @@ nav {
     
     body::before,
     body::after {
+        animation: none;
+    }
+    
+    .loader-circle,
+    .loader-text {
         animation: none;
     }
 }

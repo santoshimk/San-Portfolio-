@@ -52,8 +52,10 @@ function handleScroll() {
     // Add compact style when scrolled
     if (scrollTop > 80) {
         nav.classList.add('nav-scrolled');
+        document.body.classList.add('scrolled');
     } else {
         nav.classList.remove('nav-scrolled');
+        document.body.classList.remove('scrolled');
     }
     
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
@@ -132,10 +134,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ========== SCROLL REVEAL ANIMATIONS ==========
-// Only for elements with fade-in class
+// Enhanced scroll reveal with better performance
 const revealObserverOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    threshold: 0.15,
+    rootMargin: '0px 0px -80px 0px'
 };
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -148,10 +150,21 @@ const revealObserver = new IntersectionObserver((entries) => {
     });
 }, revealObserverOptions);
 
-// Observe elements with fade-in class
+// Observe elements with fade-in class and other animated elements
 document.addEventListener('DOMContentLoaded', () => {
     const fadeElements = document.querySelectorAll('.fade-in');
+    const skillItems = document.querySelectorAll('.skill-item');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const expertiseItems = document.querySelectorAll('.expertise-item');
+    const contactItems = document.querySelectorAll('.contact-item');
+    const contactForm = document.querySelector('.contact-form');
+    
     fadeElements.forEach(el => revealObserver.observe(el));
+    skillItems.forEach(el => revealObserver.observe(el));
+    timelineItems.forEach(el => revealObserver.observe(el));
+    expertiseItems.forEach(el => revealObserver.observe(el));
+    contactItems.forEach(el => revealObserver.observe(el));
+    if (contactForm) revealObserver.observe(contactForm);
 });
 
 // ========== SET ACTIVE PAGE IN NAVIGATION ==========
@@ -196,7 +209,99 @@ window.addEventListener('load', function() {
             // Remove from DOM after transition
             setTimeout(() => {
                 loader.remove();
+                // Add particles after loading
+                createParticles();
             }, 500);
         }, 1500);
+    }
+});
+
+// ========== FLOATING PARTICLES BACKGROUND ==========
+function createParticles() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return; // Don't create particles if user prefers reduced motion
+    }
+    
+    const particlesContainer = document.createElement('div');
+    particlesContainer.className = 'particles';
+    
+    // Create 5 particles
+    for (let i = 0; i < 5; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.animationDelay = `${Math.random() * 10}s`;
+        particle.style.animationDuration = `${15 + Math.random() * 10}s`;
+        particlesContainer.appendChild(particle);
+    }
+    
+    document.body.appendChild(particlesContainer);
+}
+
+// ========== SMOOTH HOVER EFFECTS ==========
+document.addEventListener('DOMContentLoaded', () => {
+    // Add ripple effect to buttons
+    const buttons = document.querySelectorAll('.cta-button, .submit-btn');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+    
+    // Add parallax effect to hero image
+    const heroImage = document.querySelector('.hero-image');
+    if (heroImage && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
+            
+            heroImage.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+        
+        heroImage.addEventListener('mouseenter', () => {
+            heroImage.style.transition = 'none';
+        });
+        
+        heroImage.addEventListener('mouseleave', () => {
+            heroImage.style.transition = 'all 0.5s ease';
+            heroImage.style.transform = 'rotateY(0deg) rotateX(0deg)';
+        });
+    }
+});
+
+// ========== MAGNETIC EFFECT FOR NAV ICONS ==========
+document.addEventListener('DOMContentLoaded', () => {
+    const navIcons = document.querySelectorAll('.nav-icons a');
+    
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        navIcons.forEach(icon => {
+            icon.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                this.style.transform = `translateY(-3px) scale(1.1) translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            
+            icon.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
     }
 });
