@@ -1,0 +1,149 @@
+/* ============================================
+   Lightweight Animations
+   Only loads where needed - respects prefers-reduced-motion
+   ============================================ */
+
+/* Slide Down Animation for Nav */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+nav {
+    animation: slideDown 0.6s ease-out;
+}
+
+/* Fade In Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Hero Animations */
+.hero-content {
+    animation: fadeInUp 0.8s ease-out 0.3s backwards;
+}
+
+.hero-text h1 {
+    animation: fadeInLeft 0.8s ease-out 0.5s backwards;
+}
+
+.hero-text p {
+    animation: fadeInLeft 0.8s ease-out 0.7s backwards;
+}
+
+.cta-button {
+    animation: fadeInLeft 0.8s ease-out 0.9s backwards;
+}
+
+.hero-image {
+    animation: fadeInRight 0.8s ease-out 0.6s backwards;
+}
+
+/* Floating Animation for Image */
+@keyframes float-gentle {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.image-wrapper {
+    animation: float-gentle 5s ease-in-out infinite;
+}
+
+/* Slide In Animations for Menu Items */
+@keyframes slideInMenuItem {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Loading Animation */
+@keyframes tech-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader-circle {
+    animation: tech-spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+.loader-circle:nth-child(2) {
+    animation-delay: 0.2s;
+    animation-direction: reverse;
+}
+
+.loader-circle:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .image-wrapper {
+        animation: none;
+    }
+    
+    body::before,
+    body::after {
+        animation: none;
+    }
+}

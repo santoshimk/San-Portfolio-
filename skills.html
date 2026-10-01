@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technical Skills & Expertise - Programming, Web Development, Databases, and Problem Solving">
+    <title>Skills & Expertise - Santhoshikar MK</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">SAN</div>
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-menu">
+            <a href="index.html"><span>Home</span></a>
+            <a href="about.html"><span>About</span></a>
+            <a href="skills.html" class="active"><span>Skills</span></a>
+            <a href="projects.html"><span>Projects</span></a>
+            <a href="education.html"><span>Education</span></a>
+            <a href="contact.html"><span>Contact</span></a>
+        </div>
+        <div class="nav-icons">
+            <a href="https://www.linkedin.com/in/santhoshikar-mk-704a4a346" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill="currentColor"/></svg>
+            </a>
+            <a href="assets/resume/Santhoshikar_MK_Resume.docx" download aria-label="Download CV">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg>
+            </a>
+        </div>
+    </nav>
+
+    <section class="section fade-in" id="expertise">
+        <div class="container">
+            <h2 class="section-title">My <span>Expertise</span></h2>
+            <div class="expertise-accordion">
+                <div class="expertise-item">
+                    <div class="expertise-header" onclick="toggleExpertise(this)">
+                        <div class="expertise-title-wrapper">
+                            <div class="icon-small">
+                                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                </svg>
+                            </div>
+                            <h3>PROGRAMMING</h3>
+                        </div>
+                        <div class="toggle-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="expertise-content">
+                        <p class="description-label">Description</p>
+                        <p class="expertise-description">Strong foundation in multiple programming languages including Java, Python, and C++. Experienced in object-oriented programming, data structures, and algorithm implementation.</p>
+                        <p class="skillset-label">Skillset & Tools</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">OOP</span>
+                            <span class="skill-tag">Data Structures</span>
+                            <span class="skill-tag">Algorithms</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expertise-item">
+                    <div class="expertise-header" onclick="toggleExpertise(this)">
+                        <div class="expertise-title-wrapper">
+                            <div class="icon-small">
+                                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                </svg>
+                            </div>
+                            <h3>WEB DEVELOPMENT</h3>
+                        </div>
+                        <div class="toggle-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="expertise-content">
+                        <p class="description-label">Description</p>
+                        <p class="expertise-description">Building modern, responsive websites with clean code and user-friendly interfaces. Focus on creating visually appealing and functional web applications.</p>
+                        <p class="skillset-label">Skillset & Tools</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Responsive Design</span>
+                            <span class="skill-tag">VS Code</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expertise-item">
+                    <div class="expertise-header" onclick="toggleExpertise(this)">
+                        <div class="expertise-title-wrapper">
+                            <div class="icon-small">
+                                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                                </svg>
+                            </div>
+                            <h3>DATABASE MANAGEMENT</h3>
+                        </div>
+                        <div class="toggle-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="expertise-content">
+                        <p class="description-label">Description</p>
+                        <p class="expertise-description">Experience with both SQL and NoSQL databases. Capable of designing database schemas, writing efficient queries, and managing data effectively.</p>
+                        <p class="skillset-label">Skillset & Tools</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">SQL Queries</span>
+                            <span class="skill-tag">Database Design</span>
+                            <span class="skill-tag">NoSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expertise-item">
+                    <div class="expertise-header" onclick="toggleExpertise(this)">
+                        <div class="expertise-title-wrapper">
+                            <div class="icon-small">
+                                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                </svg>
+                            </div>
+                            <h3>PROBLEM SOLVING</h3>
+                        </div>
+                        <div class="toggle-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="expertise-content">
+                        <p class="description-label">Description</p>
+                        <p class="expertise-description">Strong analytical and logical thinking skills. Enjoy tackling complex problems and finding efficient solutions through systematic approaches.</p>
+                        <p class="skillset-label">Skillset & Tools</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Algorithms</span>
+                            <span class="skill-tag">Data Structures</span>
+                            <span class="skill-tag">Logical Thinking</span>
+                            <span class="skill-tag">Debugging</span>
+                            <span class="skill-tag">Optimization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Santhoshikar MK. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/santhoshikar-mk-704a4a346" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:santoshi.mk2006@gmail.com">Email</a>
+                <a href="tel:+918217865707">Phone</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+    <script>
+        function toggleExpertise(header) {
+            const item = header.parentElement;
+            const wasActive = item.classList.contains('active');
+            document.querySelectorAll('.expertise-item').forEach(i => i.classList.remove('active'));
+            if (!wasActive) item.classList.add('active');
+        }
+    </script>
+</body>
+</html>
