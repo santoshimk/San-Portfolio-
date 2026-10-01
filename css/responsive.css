@@ -117,37 +117,27 @@
     .nav-icons a {
         width: 42px;
         height: 42px;
-        background: linear-gradient(135deg, rgba(255, 20, 147, 0.3), rgba(255, 105, 180, 0.2));
+        padding: 0;
+        background: linear-gradient(135deg, rgba(255, 20, 147, 0.4), rgba(255, 105, 180, 0.3));
         border: 2px solid var(--secondary-pink);
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 2px 15px rgba(255, 20, 147, 0.4);
+        box-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
         position: relative;
-    }
-    
-    .nav-icons a::before {
-        content: '';
-        position: absolute;
-        inset: -2px;
-        background: var(--gradient-primary);
-        border-radius: 50%;
-        opacity: 0.3;
-        z-index: -1;
-        animation: glowing-border 2s ease-in-out infinite;
+        overflow: hidden;
     }
 
     .nav-icons a svg {
         width: 22px;
         height: 22px;
-        fill: #ffffff !important;
-        stroke: #ffffff;
-        filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
+        position: relative;
+        z-index: 10;
     }
     
     .nav-icons a svg path {
         fill: #ffffff !important;
-        stroke: #ffffff;
+        stroke: none;
     }
 
     /* Hero Mobile */
@@ -326,23 +316,28 @@
     }
     
     .nav-icons a {
-        background: linear-gradient(135deg, rgba(255, 20, 147, 0.35), rgba(255, 105, 180, 0.25));
-        border: 2px solid var(--secondary-pink);
-        box-shadow: 0 2px 15px rgba(255, 20, 147, 0.5), 
-                    inset 0 0 10px rgba(255, 255, 255, 0.1);
+        padding: 0 !important;
+        background: linear-gradient(135deg, rgba(255, 20, 147, 0.4), rgba(255, 105, 180, 0.3)) !important;
+        border: 2px solid var(--secondary-pink) !important;
+        box-shadow: 0 2px 15px rgba(255, 20, 147, 0.6) !important;
     }
     
     .nav-icons a svg {
-        fill: #ffffff !important;
-        stroke: #ffffff !important;
-        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)) 
-                drop-shadow(0 0 8px rgba(255, 20, 147, 0.6));
+        position: relative;
+        z-index: 10;
+        width: 22px !important;
+        height: 22px !important;
     }
     
-    .nav-icons a svg path {
+    .nav-icons a svg,
+    .nav-icons a:hover svg {
         fill: #ffffff !important;
-        stroke: #ffffff !important;
-        stroke-width: 0.5;
+        filter: none !important;
+    }
+    
+    .nav-icons a svg path,
+    .nav-icons a:hover svg path {
+        fill: #ffffff !important;
     }
     
     /* Ensure text colors are consistent */
@@ -486,8 +481,8 @@
 
 /* Mobile touch improvements */
 @media (max-width: 768px) and (hover: none) and (pointer: coarse) {
-    /* Larger touch targets for mobile */
-    nav a {
+    /* Larger touch targets for mobile menu links only — not icon buttons */
+    .nav-menu a {
         padding: 18px 20px;
         font-size: 16px;
     }
@@ -500,6 +495,7 @@
     .nav-icons a {
         width: 44px;
         height: 44px;
+        padding: 0;
         background: rgba(255, 20, 147, 0.2);
         border: 2px solid rgba(255, 20, 147, 0.5);
     }

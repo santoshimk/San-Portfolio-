@@ -305,6 +305,9 @@ nav a.active span::after {
 .nav-icons a {
     width: 40px;
     height: 40px;
+    padding: 0;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -313,6 +316,7 @@ nav a.active span::after {
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
+    flex-shrink: 0;
     transition: var(--transition-smooth);
 }
 
@@ -339,7 +343,10 @@ nav a.active span::after {
 .nav-icons a svg {
     width: 20px;
     height: 20px;
-    fill: var(--text-light);
+    display: block;
+    flex-shrink: 0;
+    fill: currentColor;
+    color: #fff;
     transition: var(--transition-smooth);
 }
 
