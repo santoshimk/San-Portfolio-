@@ -55,16 +55,20 @@
         flex-direction: column;
         background: rgba(10, 10, 10, 0.98);
         backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
         padding: 0;
         gap: 0;
         max-height: 0;
         overflow: hidden;
         opacity: 0;
-        transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
-        border-bottom: 2px solid rgba(255, 20, 147, 0.3);
+        transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                    opacity 0.4s ease, 
+                    padding 0.4s ease;
+        border-bottom: 2px solid var(--card-border);
         box-shadow: 0 10px 40px rgba(255, 20, 147, 0.2);
         transform: none;
         position: fixed;
+        z-index: 999;
     }
 
     .nav-menu.active {
@@ -77,8 +81,23 @@
         padding: 15px 20px;
         text-align: center;
         border-bottom: 1px solid rgba(255, 20, 147, 0.1);
-        font-size: 15px;
+        font-size: 16px;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: var(--transition-smooth);
     }
+    
+    .nav-menu.active a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .nav-menu.active a:nth-child(1) { transition-delay: 0.1s; }
+    .nav-menu.active a:nth-child(2) { transition-delay: 0.15s; }
+    .nav-menu.active a:nth-child(3) { transition-delay: 0.2s; }
+    .nav-menu.active a:nth-child(4) { transition-delay: 0.25s; }
+    .nav-menu.active a:nth-child(5) { transition-delay: 0.3s; }
+    .nav-menu.active a:nth-child(6) { transition-delay: 0.35s; }
 
     .nav-menu a:last-child {
         border-bottom: none;
@@ -129,7 +148,6 @@
     .hero-text p {
         font-size: 15px;
         line-height: 1.6;
-        color: var(--text-gray);
     }
 
     .cta-button {
@@ -257,5 +275,218 @@
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* ============================================
+   Mobile-Specific Enhancements
+   ============================================ */
+
+/* Ensure consistent colors on mobile */
+@media (max-width: 768px) {
+    /* Ensure body background is consistent */
+    body {
+        background: linear-gradient(to bottom, var(--darker-bg), var(--dark-bg));
+    }
+    
+    /* Ensure text colors are consistent */
+    .hero-text h1 {
+        color: var(--text-light);
+        text-shadow: 2px 2px 8px var(--glow-pink);
+    }
+    
+    .hero-text h1 #typewriter {
+        background: var(--gradient-primary);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    /* Mobile CTA button with full effects */
+    .cta-button {
+        background: var(--gradient-primary);
+        background-size: 200% 200%;
+        box-shadow: 0 8px 25px var(--glow-pink);
+    }
+    
+    /* Mobile skill cards */
+    .skill-item {
+        background: linear-gradient(135deg, rgba(183, 148, 246, 0.1), rgba(83, 168, 255, 0.1));
+        border: 2px solid rgba(183, 148, 246, 0.3);
+    }
+    
+    .skill-item h4 {
+        color: var(--accent-purple);
+    }
+    
+    .skill-item p {
+        color: var(--text-muted);
+    }
+    
+    /* Mobile timeline consistency */
+    .timeline::before {
+        background: linear-gradient(to bottom, 
+            var(--primary-pink) 0%, 
+            var(--accent-purple) 50%, 
+            var(--accent-blue) 100%);
+    }
+    
+    .timeline-item::before {
+        background: var(--gradient-primary);
+        box-shadow: 0 0 30px var(--glow-pink);
+    }
+    
+    /* Mobile form inputs */
+    .form-group input,
+    .form-group textarea {
+        background: rgba(26, 26, 46, 0.8);
+        border: 2px solid rgba(183, 148, 246, 0.3);
+        color: var(--text-light);
+    }
+    
+    /* Mobile expertise items */
+    .expertise-item {
+        background: rgba(15, 15, 20, 0.95);
+        border: 2px solid var(--card-border);
+    }
+    
+    .expertise-header h3 {
+        color: var(--text-light);
+    }
+    
+    .skill-tag {
+        background: rgba(15, 15, 20, 0.9);
+        border: 2px solid rgba(255, 20, 147, 0.4);
+        color: var(--secondary-pink);
+    }
+    
+    /* Mobile contact items */
+    .contact-item {
+        background: linear-gradient(135deg, rgba(183, 148, 246, 0.05), rgba(83, 168, 255, 0.05));
+        border: 1px solid rgba(183, 148, 246, 0.2);
+    }
+    
+    .contact-item h4 {
+        color: var(--text-light);
+    }
+    
+    .contact-item p {
+        color: var(--text-muted);
+    }
+    
+    /* Mobile footer */
+    footer {
+        background: rgba(26, 26, 46, 0.9);
+        border-top: 2px solid rgba(183, 148, 246, 0.2);
+    }
+    
+    footer p {
+        color: var(--text-muted);
+    }
+    
+    .social-links a {
+        color: var(--text-muted);
+    }
+    
+    /* Section titles on mobile */
+    .section-title {
+        color: var(--text-light);
+    }
+    
+    .section-title span {
+        background: var(--gradient-secondary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+/* Ensure timeline content text colors */
+@media (max-width: 768px) {
+    .timeline-content h3 {
+        background: linear-gradient(135deg, #fff, var(--accent-purple));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .timeline-content h4 {
+        color: var(--accent-blue);
+    }
+    
+    .timeline-content p {
+        color: var(--text-muted);
+    }
+    
+    .timeline-content ul li {
+        color: var(--text-muted);
+    }
+    
+    .timeline-content ul li::before {
+        color: var(--accent-purple);
+    }
+}
+
+/* Mobile touch improvements */
+@media (max-width: 768px) and (hover: none) and (pointer: coarse) {
+    /* Larger touch targets for mobile */
+    nav a {
+        padding: 18px 20px;
+        font-size: 16px;
+    }
+    
+    .cta-button {
+        padding: 16px 40px;
+        font-size: 16px;
+    }
+    
+    .nav-icons a {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .submit-btn {
+        padding: 16px;
+        font-size: 17px;
+    }
+    
+    /* Disable hover-only effects on touch devices */
+    .image-wrapper:hover {
+        transform: none;
+    }
+    
+    /* Keep tap highlight but prevent unwanted hover states */
+    * {
+        -webkit-tap-highlight-color: rgba(255, 20, 147, 0.2);
+    }
+}
+
+/* Improve mobile menu animation */
+@media (max-width: 768px) {
+    .nav-menu {
+        will-change: max-height, opacity;
+    }
+    
+    .nav-menu a {
+        will-change: opacity, transform;
+    }
+}
+
+/* Fix mobile background consistency */
+@media (max-width: 480px) {
+    body {
+        background: linear-gradient(to bottom, var(--darker-bg), var(--dark-bg));
+    }
+    
+    body::before {
+        opacity: 0.5;
+    }
+    
+    body::after {
+        width: 300px;
+        height: 300px;
+        filter: blur(50px);
     }
 }
