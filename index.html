@@ -140,6 +140,15 @@
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.7; transform: scale(1.05); }
         }
+
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -246,7 +255,7 @@
             }
         }
 
-        /* Navigation with animations */
+        /* Navigation with beautiful smooth animations */
         nav {
             position: fixed;
             top: 0;
@@ -254,24 +263,73 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px 50px;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
+            padding: 18px 50px;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
             z-index: 1000;
-            gap: 50px;
-            box-shadow: 0 4px 30px rgba(255, 20, 147, 0.3);
-            border-bottom: 2px solid #ff1493;
-            animation: slideDown 0.8s ease-out;
+            gap: 35px;
+            box-shadow: 0 8px 32px rgba(255, 20, 147, 0.15),
+                        0 2px 8px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 20, 147, 0.3);
+            animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: top;
+        }
+
+        /* Elegant glow effect on nav */
+        nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 20, 147, 0.8) 20%, 
+                rgba(255, 105, 180, 0.8) 50%, 
+                rgba(255, 20, 147, 0.8) 80%, 
+                transparent 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        nav:hover::before {
+            opacity: 1;
+        }
+
+        /* Hidden state with smooth animation */
+        nav.nav-hidden {
+            transform: translateY(-120%) scale(0.95);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Compact elegant scrolled state */
+        nav.nav-scrolled {
+            padding: 12px 50px;
+            background: rgba(10, 10, 10, 0.98);
+            box-shadow: 0 4px 24px rgba(255, 20, 147, 0.25),
+                        0 8px 40px rgba(255, 20, 147, 0.15),
+                        0 0 60px rgba(255, 20, 147, 0.05);
+            border-bottom: 1px solid rgba(255, 20, 147, 0.5);
+        }
+
+        nav.nav-scrolled::before {
+            opacity: 0.6;
         }
 
         @keyframes slideDown {
             from {
-                transform: translateY(-100px);
+                transform: translateY(-120px) scale(0.9);
                 opacity: 0;
+                filter: blur(10px);
             }
             to {
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
                 opacity: 1;
+                filter: blur(0);
             }
         }
 
@@ -279,86 +337,201 @@
             font-family: 'Orbitron', monospace;
             color: #ffffff;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 600;
-            padding: 8px 16px;
+            padding: 10px 18px;
             position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
+            border-radius: 8px;
+            background: transparent;
+            overflow: hidden;
         }
 
+        /* Cute sparkle effect on nav links */
+        nav a::after {
+            content: '✨';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 12px;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: scale(0) rotate(-45deg);
+        }
+
+        nav a:hover::after {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+            top: 2px;
+            right: 2px;
+        }
+
+        /* Gradient background on hover */
         nav a::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #ff1493;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 10px #ff1493;
-        }
+            inset: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 20, 147, 0.15), 
+                rgba(255, 105, 180, 0.15));
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 8px;
+            z-index: -1;
         }
 
-        nav a:hover::before,
-        nav a.active::before {
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* Animated underline */
+        nav a span {
+            position: relative;
+            z-index: 1;
+        }
+
+        nav a span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff1493, #ff69b4, #ff1493, transparent);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateX(-50%);
+            box-shadow: 0 0 8px #ff1493;
+        }
+
+        nav a:hover span::after,
+        nav a.active span::after {
             width: 100%;
         }
 
         nav a:hover {
             color: #ff69b4;
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.05);
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+        }
+
+        nav a.active {
+            color: #ff1493;
+            text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+            background: rgba(255, 20, 147, 0.1);
+        }
+
+        nav a.active::before {
+            opacity: 1;
+        }
+
+        /* Cute floating animation for active link */
+        @keyframes floatActive {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+        }
+
+        nav a.active {
+            animation: floatActive 2s ease-in-out infinite;
         }
 
         .nav-icons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             margin-left: auto;
         }
 
         .nav-icons a {
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #ffe4f1, #ffd4e9);
+            background: linear-gradient(135deg, rgba(255, 228, 241, 0.1), rgba(255, 212, 233, 0.1));
             border-radius: 50%;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
-            border: 2px solid #ff69b4;
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            backdrop-filter: blur(10px);
         }
 
+        /* Ripple effect on icon hover */
         .nav-icons a::before {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ff69b4, #ff85c1);
-            opacity: 0;
-            transition: opacity 0.3s;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 20, 147, 0.4), transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
         }
 
         .nav-icons a:hover::before {
+            width: 120px;
+            height: 120px;
+        }
+
+        /* Sparkle effect for icons */
+        .nav-icons a::after {
+            content: '✨';
+            position: absolute;
+            font-size: 10px;
+            opacity: 0;
+            top: -5px;
+            right: -5px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: scale(0) rotate(-180deg);
+            pointer-events: none;
+        }
+
+        .nav-icons a:hover::after {
             opacity: 1;
+            transform: scale(1) rotate(0deg);
         }
 
         .nav-icons a svg {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             color: #ff69b4;
-            transition: color 0.3s;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 0 3px rgba(255, 105, 180, 0.3));
         }
 
         .nav-icons a:hover svg {
             color: white;
+            transform: scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
         }
 
         .nav-icons a:hover {
-            transform: translateY(-5px) scale(1.1) rotate(5deg);
-            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
+            transform: translateY(-5px) scale(1.15) rotate(-5deg);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5),
+                        0 0 20px rgba(255, 105, 180, 0.3);
+            border-color: #ff1493;
+            background: linear-gradient(135deg, rgba(255, 20, 147, 0.3), rgba(255, 105, 180, 0.3));
+        }
+
+        /* Pulse animation for icons */
+        @keyframes iconPulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 20, 147, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(255, 20, 147, 0);
+            }
+        }
+
+        .nav-icons a {
+            animation: iconPulse 3s ease-in-out infinite;
+        }
+
+        .nav-icons a:nth-child(2) {
+            animation-delay: 0.5s;
         }
 
         /* Hero Section with animations */
@@ -1775,30 +1948,45 @@
                 height: 400px;
             }
 
-            /* Mobile Navigation */
+            /* Mobile Navigation - Enhanced */
             nav {
-                padding: 15px 20px;
+                padding: 12px 20px;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 15px;
+                gap: 12px;
+                backdrop-filter: blur(20px) saturate(150%);
+            }
+
+            nav.nav-scrolled {
+                padding: 10px 20px;
             }
 
             nav a {
-                font-size: 12px;
-                padding: 6px 10px;
-                letter-spacing: 1px;
+                font-size: 11px;
+                padding: 8px 14px;
+                letter-spacing: 1.5px;
+            }
+
+            nav a::after {
+                font-size: 10px;
             }
 
             .nav-icons {
                 width: 100%;
                 justify-content: center;
                 margin-left: 0;
-                margin-top: 10px;
+                margin-top: 8px;
+                gap: 12px;
             }
 
             .nav-icons a {
-                width: 40px;
-                height: 40px;
+                width: 38px;
+                height: 38px;
+            }
+
+            .nav-icons a svg {
+                width: 18px;
+                height: 18px;
             }
 
             /* Hero Section Mobile */
@@ -2163,18 +2351,18 @@
 
     <!-- Navigation -->
     <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#expertise">Expertise</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
+        <a href="#home" class="active"><span></span>HOME</span></a>
+        <a href="#about"><span>ABOUT</span></a>
+        <a href="#expertise"><span>EXPERTISE</span></a>
+        <a href="#experience"><span>EXPERIENCE</span></a>
+        <a href="#contact"><span>CONTACT</span></a>
         <div class="nav-icons">
-            <a href="#" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/santhoshikar-mk" target="_blank" aria-label="LinkedIn">
                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
             </a>
-            <a href="#" aria-label="Download CV">
+            <a href="Santhoshikar_MK_Resume.docx" download aria-label="Download CV">
                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
                 </svg>
@@ -2603,26 +2791,75 @@
             });
         });
 
-        // Active navigation highlight with smooth transition
+        // Beautiful smooth scroll navigation with elegant hide/show
         const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav a');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        const nav = document.querySelector('nav');
+        let lastScrollTop = 0;
+        let scrollTimeout;
+        let ticking = false;
 
+        // Optimized scroll handler with requestAnimationFrame
         window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        function handleScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Clear any existing timeout
+            clearTimeout(scrollTimeout);
+            
+            // Smooth hide/show navigation
+            if (scrollTop > lastScrollTop && scrollTop > 150) {
+                // Scrolling down & past 150px - hide nav elegantly
+                nav.classList.add('nav-hidden');
+                nav.classList.add('nav-scrolled');
+            } else if (scrollTop < lastScrollTop) {
+                // Scrolling up - show nav with bounce
+                nav.classList.remove('nav-hidden');
+            }
+            
+            // Add compact style when scrolled
+            if (scrollTop > 80) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+            
+            // Update last scroll position
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            
+            // Active section highlighting with smooth transition
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 200) {
+                if (scrollTop >= sectionTop - 250) {
                     current = section.getAttribute('id');
                 }
             });
 
+            // Update active nav link with smooth animation
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
                 }
             });
+        }
+
+        // Ensure nav shows when mouse moves near top
+        document.addEventListener('mousemove', (e) => {
+            if (e.clientY < 100 && window.pageYOffset > 150) {
+                nav.classList.remove('nav-hidden');
+            }
         });
 
         // Form submission with animation
